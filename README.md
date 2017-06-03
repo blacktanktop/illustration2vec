@@ -1,6 +1,7 @@
 # Introduction
 
-retrieve_illustration.py can resize, extract tags, vectorize, and display with your images (jpg files or png files) 
+This scripts (retrieve_illustration.py) can resize, extract tags, vectorize many image files (jpg files) in a directory at a time,
+and finaly can make jpg file to display similar images with cosine similarity.
 by using [illustration2vec](https://github.com/rezoo/illustration2vec)
 
 # Requirements
