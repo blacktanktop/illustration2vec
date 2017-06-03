@@ -1,16 +1,15 @@
-
-#Introduction
+# Introduction
 
 retrieve_illustration.py can resize, extract tags, vectorize, and display with your images (jpg files or png files) 
 by using [illustration2vec](https://github.com/rezoo/illustration2vec)
 
-#Requirements
+# Requirements
 
 * anaconda3-4.2.0
 * chainer
 * illustration2vec
 
-#How to make enviroment
+# How to make enviroment
 Recommend to make enviroment with [pyenv](https://github.com/pyenv/pyenv)
 
 ```
@@ -52,7 +51,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --version             show program's version number and exit
 ```
-#Usage
+# Usage
 
 This script can resize, extract tags, vectorize many image files in directory at a time, 
 and can calculate cosine similarity, furthermore can search similar images
