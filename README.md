@@ -27,10 +27,11 @@ pip install chainer
 # illustration2vec needs some model file, tag list, and other stuff.
 sh get_models.sh
 ```
+
 if you finished making enviroment, type shown blow command
+
 ```
 python retrieve_illustration.py -h
-
 ```
 
 and then return this
