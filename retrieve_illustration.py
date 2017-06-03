@@ -124,7 +124,7 @@ def add_calculate_parser(subparsers):
     group_input.add_argument("-i", "--input", dest = "input_file", type = str, required = True,
                               help = "Input file must be csv files written vectorize image tags. REQUIRED.")
     group_input.add_argument("-t", "--title", dest = "title", type = str, required = True,
-                              help = "Images is used by which PJ. REQUIRED.")
+                              help = "named output file. REQUIRED.")
     # group for output files
     group_output = argparser_caluculate.add_argument_group("Output arguments")
     add_outdir_option(group_output)
@@ -140,7 +140,7 @@ def add_search_parser(subparsers):
     group_input.add_argument("-i", "--input", dest = "input_file", type = str, required = True,
                               help = "Input file must be csv files written cosine similarity and image files. REQUIRED.")
     group_input.add_argument("-t", "--title", dest = "title", type = str, required = True,
-                              help = "Images is used by which PJ. REQUIRED.")
+                              help = "named output file. REQUIRED.")
     # group for output files
     group_output = argparser_search.add_argument_group("Output arguments")
     add_outdir_option(group_output)
