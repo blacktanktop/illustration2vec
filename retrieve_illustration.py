@@ -44,6 +44,9 @@ def main():
     if subcommand == "search":
         from ILLUSTRATE.searchllustration import main
         main(args)
+    if subcommand == "linedraw":
+        from ILLUSTRATE.linedraw import main
+        main(args)
  
 def prepare_argparser ():
     """Prepare optparser object. New options will be added in this
@@ -68,6 +71,8 @@ def prepare_argparser ():
     add_calculate_parser(subparsers)
     # command for 'search'
     add_search_parser(subparsers)
+    # command for 'linedraw'
+    add_linedraw_parser(subparsers)
     return argparser
  
 def add_outdir_option (parser):
@@ -87,9 +92,9 @@ def add_resize_parser(subparsers):
     # group for input files
     group_input = argparser_resize.add_argument_group("Input files arguments")
     group_input.add_argument("-i", "--input", dest = "input_dir", type = str, required = True,
-                              help = "Set input dir must be directory included only jpeg or png files. REQUIRED.")
+                              help = "set input dir must be directory included only jpeg or png files. REQUIRED.")
     group_input.add_argument("-s", "--size", dest = "resize", type = str, required = True,
-                              help = "Set height size you want. Aspect ratio is fixed. REQUIRED.")
+                              help = "set size you want. REQUIRED.")
     # group for output files
     group_output = argparser_resize.add_argument_group("Output arguments")
     add_outdir_option(group_output)
@@ -103,11 +108,11 @@ def add_vectorize_parser(subparsers):
     # group for input files
     group_input = argparser_vectorize.add_argument_group("Input files arguments")
     group_input.add_argument("-i", "--input", dest = "input_dir", type = str, required = True,
-                              help = "Input file must be resize image files. REQUIRED.")
+                              help = "input file must be resize image files. REQUIRED.")
     group_input.add_argument("-t", "--threshold", dest = "threshold", type = str, required = True,
-                              help = "Set thresh hold you want. REQUIRED.")
+                              help = "set thresh hold you want. REQUIRED.")
     group_input.add_argument("-v", "--vectorize", dest = "vectorize", type = str, required = True,
-            help = "Set tag (False) or vector (True) you want. REQUIRED.")
+            help = "set tag or vector you want. REQUIRED.")
 
     # group for output files
     group_output = argparser_vectorize.add_argument_group("Output arguments")
@@ -122,9 +127,9 @@ def add_calculate_parser(subparsers):
     # group for input files
     group_input = argparser_caluculate.add_argument_group("Input files arguments")
     group_input.add_argument("-i", "--input", dest = "input_file", type = str, required = True,
-                              help = "Input file must be csv files written vectorize image tags. REQUIRED.")
+                              help = "input file must be csv files written vectorize image tags. REQUIRED.")
     group_input.add_argument("-t", "--title", dest = "title", type = str, required = True,
-                              help = "named output file. REQUIRED.")
+                              help = "images is used by which PJ. REQUIRED.")
     # group for output files
     group_output = argparser_caluculate.add_argument_group("Output arguments")
     add_outdir_option(group_output)
@@ -138,26 +143,40 @@ def add_search_parser(subparsers):
     # group for input files
     group_input = argparser_search.add_argument_group("Input files arguments")
     group_input.add_argument("-i", "--input", dest = "input_file", type = str, required = True,
-                              help = "Input file must be csv files written cosine similarity and image files. REQUIRED.")
+                              help = "input file must be jpg files. REQUIRED.")
     group_input.add_argument("-t", "--title", dest = "title", type = str, required = True,
-                              help = "named output file. REQUIRED.")
+                              help = "images is used by which PJ. REQUIRED.")
     # group for output files
     group_output = argparser_search.add_argument_group("Output arguments")
     add_outdir_option(group_output)
     group_output.add_argument("-n", "--name", dest = "name", type = str,
                                help = "Project name, which will be used to generate output file names. DEFAULT: \"NA\"",
                                default = "NA")
-#def time():
-#    import time
-#    # 処理前の時刻(t0)を取得
-#    t0 = time.clock()
-#    # 計測したい処理
-#    main()
-#    # 処理後の時刻(t1)を取得
-#    t1 = time.clock()
-#    # 処理後の時刻(t1)-処理前の時刻(t0)で処理時間を計算
-#    print("dt="+str(t1-t0)+"[s]")
-# 
+def add_linedraw_parser(subparsers):
+    """Add main function 'linedraw' argument parsers.
+    """   
+    argparser_linedrow = subparsers.add_parser("linedraw", help = "Get linedraw and gray image.")
+    # group for input files
+    group_input = argparser_linedrow.add_argument_group("Input files arguments")
+    group_input.add_argument("-i", "--input", dest = "input_dir", type = str, required = True,
+                              help = "input file must be csv files written cosine similarity and image files. REQUIRED.")
+    # group for output files
+    group_output = argparser_linedrow.add_argument_group("Output arguments")
+    add_outdir_option(group_output)
+    group_output.add_argument("-n", "--name", dest = "name", type = str,
+                               help = "Project name, which will be used to generate output file names. DEFAULT: \"NA\"",
+                               default = "NA")
+def time():
+    import time
+    # 処理前の時刻(t0)を取得
+    t0 = time.clock()
+    # 計測したい処理
+    main()
+    # 処理後の時刻(t1)を取得
+    t1 = time.clock()
+    # 処理後の時刻(t1)-処理前の時刻(t0)で処理時間を計算
+    print("dt="+str(t1-t0)+"[s]")
+ 
 if __name__ == "__main__":
     try:
             main()
