@@ -50,6 +50,7 @@ positional arguments:
     calculate           Calculate cosine similarity from given vector.
     search              Search similar images from given image files by using
                         cosine similarity.
+    linedraw            Get linedraw and gray image.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -64,6 +65,12 @@ and can calculate cosine similarity, furthermore can search similar images
 
 ```
 python retrieve_illustration.py resize -i [input image file dir/ (should type "/")] -s [size (for example:256)] --outdir [output dir/]
+```
+
+1st optional step (resize : make linedraw and grayscale file)
+
+```
+python retrieve_illustration.py linedraw -i [input image file dir/ (should type "/")]  --outdir [output dir/]
 ```
 
 2nd step (extract : extracting illustration tags)
